@@ -205,10 +205,15 @@ local default_plugins = {
       require("nvim-tree").setup(opts)
     end,
   },
-
+  
+  -- Run this command if fzf fails on launch
+  -- cd ~/.local/share/nvim/lazy/telescope-fzf-native.nvim && make && cd -
   {
     "nvim-telescope/telescope.nvim",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-telescope/telescope-fzf-native.nvim",
+    },
     cmd = "Telescope",
     init = function()
       require("core.utils").load_mappings "telescope"

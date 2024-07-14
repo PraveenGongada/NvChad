@@ -19,3 +19,7 @@ end
 dofile(vim.g.base46_cache .. "defaults")
 vim.opt.rtp:prepend(lazypath)
 require "plugins"
+
+-- default plugins installation dir for mac -> ~/.local/share/nvim/lazy
+
+-- vim.filetype.add({ extension = { purs = 'purescript' }})

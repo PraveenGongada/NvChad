@@ -133,6 +133,13 @@ vim.api.nvim_create_autocmd({ "UIEnter", "BufReadPost", "BufNewFile" }, {
   end,
 })
 
+--set background to transparent
+vim.cmd[[ hi Normal guibg=NONE ctermbg=NONE ]]
+vim.cmd[[ hi NonText guibg=NONE ctermbg=NONE ]]
+vim.cmd[[ hi LineNr guibg=NONE ctermbg=NONE ]]
+vim.cmd[[ hi CursorLine guibg=NONE ctermbg=NONE ]]
+vim.cmd[[ hi Pmenu guibg=NONE ctermbg=NONE ]]
+
 -------------------------------------- commands ------------------------------------------
 local new_cmd = vim.api.nvim_create_user_command
 

@@ -38,7 +38,6 @@ opt.shortmess:append "sI"
 opt.signcolumn = "yes"
 opt.splitbelow = true
 opt.splitright = true
-opt.termguicolors = true
 opt.timeoutlen = 400
 opt.undofile = true
 
@@ -50,6 +49,12 @@ opt.updatetime = 250
 opt.whichwrap:append "<>[]hl"
 
 g.mapleader = " "
+
+-- change the scrollOffset
+opt.scrolloff = 10
+
+-- enable true colors
+opt.termguicolors = true
 
 -- disable some default providers
 for _, provider in ipairs { "node", "perl", "python3", "ruby" } do
@@ -132,6 +137,13 @@ vim.api.nvim_create_autocmd({ "UIEnter", "BufReadPost", "BufNewFile" }, {
     end
   end,
 })
+
+--set background to transparent
+vim.cmd[[ hi Normal guibg=NONE ctermbg=NONE ]]
+vim.cmd[[ hi NonText guibg=NONE ctermbg=NONE ]]
+vim.cmd[[ hi LineNr guibg=NONE ctermbg=NONE ]]
+vim.cmd[[ hi CursorLine guibg=NONE ctermbg=NONE ]]
+vim.cmd[[ hi Pmenu guibg=NONE ctermbg=NONE ]]
 
 -------------------------------------- commands ------------------------------------------
 local new_cmd = vim.api.nvim_create_user_command

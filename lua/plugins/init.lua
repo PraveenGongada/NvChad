@@ -45,7 +45,116 @@ local default_plugins = {
   {
     "nvim-tree/nvim-web-devicons",
     opts = function()
-      return { override = require "nvchad.icons.devicons" }
+        local icons = require "nvchad.icons.devicons"
+        local custom_icons = {
+          go = {
+            icon = "󰟓",
+            color = "#00acc1",
+            name = "Go"
+          },
+          ["go.mod"] = {
+            icon = "󰟓",
+            color = "#ec407a",
+            name = "GoMod"
+          },
+          ["go.sum"] = {
+            icon = "󰟓",
+            color = "#ec407a",
+            name = "GoSum"
+          },
+          ["dockerfile"] = {
+            icon = "󰡨",
+            color = "#0288D1",
+            name = "dockerfile"
+          },
+          ["Dockerfile"] = {
+            icon = "󰡨",
+            color = "#0288D1",
+            name = "Dockerfile"
+          },
+          ["docker-compose.yaml"] = {
+            icon = "󰡨",
+            color = "#0288D1",
+            name = "DockerCompose"
+          },
+          [".dockerignore"] = {
+            icon = "󰡨",
+            color = "#0288D1",
+            name = "DockerCompose"
+          },
+          ["makefile"] = {
+            icon = "",
+            color = "#ef5350",
+            name = "makefile",
+          },
+          [".env.example"] = {
+            icon = "󰙪",
+            color = "#fbc02d",
+            name = ".env.example",
+          },
+          [".env"] = {
+            icon = "󰙪",
+            color = "#fbc02d",
+            name = ".env.example",
+          },
+          ["sql"] = {
+            icon = "",
+            color = "#ffca29",
+            name = "sql",
+          },
+          ["json"] = {
+            icon = "󰘦",
+            color = "#ffca29",
+            name = "json",
+          },
+          ["pdf"] = {
+            icon = "",
+            color = "#ef5351",
+            name = "pdf",
+          },
+          [".gitignore"] = {
+            icon = "󰊢",
+            color = "#e64a19",
+            name = ".gitignore",
+          },
+          ["license"] = {
+            icon = "󰄤",
+            color = "#e64a19",
+            name = "LICENSE",
+          },
+          ["pem"] = {
+            icon = "󰌆",
+            color = "#25a79a",
+            name = "pem",
+          },
+          ["sh"] = {
+            icon = "󰆍",
+            color = "#ff7043",
+            name = "sh",
+          },
+          ["yaml"] = {
+            icon = "󰈚",
+            color = "#ef5351",
+            name = "yaml",
+          },
+          ["rs"] = {
+            icon = "",
+            color = "#ff7043",
+            name = "rs",
+          },
+          ["ts"] = {
+            icon = "",
+            color = "#007acc",
+            name = "ts",
+          },
+          ["jenkinsfile"] = {
+            icon = "",
+            color = "#f0d7b7",
+            name = "jenkinsfile",
+          },
+        }
+        icons = vim.tbl_extend("force", icons or {}, custom_icons)
+        return { override = icons }
     end,
     config = function(_, opts)
       dofile(vim.g.base46_cache .. "devicons")
@@ -205,10 +314,15 @@ local default_plugins = {
       require("nvim-tree").setup(opts)
     end,
   },
-
+  
+  -- Run this command if fzf fails on launch
+  -- cd ~/.local/share/nvim/lazy/telescope-fzf-native.nvim && make && cd -
   {
     "nvim-telescope/telescope.nvim",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-telescope/telescope-fzf-native.nvim",
+    },
     cmd = "Telescope",
     init = function()
       require("core.utils").load_mappings "telescope"

@@ -52,6 +52,9 @@ M.general = {
       end,
       "LSP formatting",
     },
+
+    -- Remove 'u' for undo
+    ["u"] = { "", "No Operation" },
   },
 
   t = {
@@ -193,7 +196,7 @@ M.lspconfig = {
       "LSP references",
     },
 
-    ["<leader>lf"] = {
+    ["fd"] = {
       function()
         vim.diagnostic.open_float { border = "rounded" }
       end,
@@ -270,7 +273,7 @@ M.telescope = {
 
   n = {
     -- find
-    ["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "Find files" },
+    ["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "Find files" }, -- add this after fild_files to disable preview -> previewer=false
     ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "Find all" },
     ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "Live grep" },
     ["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "Find buffers" },
@@ -279,8 +282,8 @@ M.telescope = {
     ["<leader>fz"] = { "<cmd> Telescope current_buffer_fuzzy_find <CR>", "Find in current buffer" },
 
     -- git
-    ["<leader>cm"] = { "<cmd> Telescope git_commits <CR>", "Git commits" },
-    ["<leader>gt"] = { "<cmd> Telescope git_status <CR>", "Git status" },
+    ["<leader>gc"] = { "<cmd> Telescope git_commits <CR>", "Git commits" },
+    ["<leader>gs"] = { "<cmd> Telescope git_status <CR>", "Git status" },
 
     -- pick a hidden term
     ["<leader>pt"] = { "<cmd> Telescope terms <CR>", "Pick hidden term" },
@@ -462,6 +465,8 @@ M.gitsigns = {
       end,
       "Toggle deleted",
     },
+
+    ["<leader>do"] = { "<cmd> DiffviewOpen<CR>", "DiffViewOpen" },
   },
 }
 

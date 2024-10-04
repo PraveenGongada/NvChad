@@ -69,6 +69,9 @@ local default_plugins = {
 
   {
     "nvim-treesitter/nvim-treesitter",
+    dependencies = {
+      "rescript-lang/tree-sitter-rescript"
+    },
     event = { "BufReadPost", "BufNewFile" },
     cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
     build = ":TSUpdate",
@@ -76,6 +79,20 @@ local default_plugins = {
       return require "plugins.configs.treesitter"
     end,
     config = function(_, opts)
+      vim.list_extend(opts.ensure_installed, {
+        "rescript",
+      })
+      local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+      parser_config.rescript = {
+        install_info = {
+          url = "https://github.com/rescript-lang/tree-sitter-rescript",
+          branch = "main",
+          files = { "src/scanner.c" },
+          generate_requires_npm = false,
+          requires_generate_from_grammar = true,
+          use_makefile = true, -- macOS specific instruction
+        },
+      }
       dofile(vim.g.base46_cache .. "syntax")
       require("nvim-treesitter.configs").setup(opts)
     end,

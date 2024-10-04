@@ -1,5 +1,5 @@
 local options = {
-  ensure_installed = { "tsx", "typescript", "toml", "json",  "yaml", "go", "css", "html", "lua", "vim", "vimdoc" },
+  ensure_installed = { "tsx", "typescript", "toml", "json",  "yaml", "go", "css", "html", "lua", "vim", "vimdoc", "purescript" },
   highlight = {
     enable = true,
     use_languagetree = true,
@@ -14,7 +14,6 @@ local options = {
         return true
     end
   end,
-
   autotag = {
     enable = true,
     disable = {}

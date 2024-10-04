@@ -22,4 +22,4 @@ require "plugins"
 
 -- default plugins installation dir for mac -> ~/.local/share/nvim/lazy
 
--- vim.filetype.add({ extension = { purs = 'purescript' }})
+vim.filetype.add({ extension = { purs = 'purescript' }})

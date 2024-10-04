@@ -54,7 +54,7 @@ M.general = {
     },
 
     -- Remove 'u' for undo
-    ["u"] = { "", "No Operation" },
+    -- ["u"] = { "", "No Operation" },
   },
 
   t = {

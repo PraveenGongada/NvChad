@@ -8,7 +8,7 @@ M.general = {
     ["<C-k>"] = { "<cmd> TmuxNavigateUp<CR>", "window up" },
 
     --Undo Tree Commands
-    ["<leader>u"] = { ":UndotreeToggle<CR>", "Toggel UndoTree" },
+    ["<leader>u"] = { ":UndotreeToggle<CR>", "Toggle UndoTree" },
   },
   i = {
     ["jj"] = { "<ESC>", "Escape insert Mode" , opts = { nowait = true }},

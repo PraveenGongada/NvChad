@@ -10,13 +10,18 @@ local plugins = {
     },
     opts = {
       ensure_installed = {
+        "lua-language-server",
         "gopls",
         "rust-analyzer",
-        -- "purescript-language-server",
+        "purescript-language-server",
+        "rescript-language-server",
         "typescript-language-server",
         "tailwindcss-language-server",
         "css-lsp",
-        "prettierd"
+        "prettierd",
+        "gofumpt",
+        "goimports_reviser",
+        "golines",
       },
     },
   },
@@ -152,8 +157,6 @@ local plugins = {
         [[                                                                       ]],
         [[                                                                       ]],
         [[                                                                       ]],
-        [[                                                                       ]],
-        [[                                                                       ]],
         [[                                                                     ]],
         [[       ████ ██████           █████      ██                     ]],
         [[      ███████████             █████                             ]],
@@ -167,7 +170,6 @@ local plugins = {
         [[                             Praveen Kumar                             ]],
         [[                                                                       ]],
         [[                                                                       ]],
-        [[                                                                       ]],
       }
       _Gopts = {
         position = "center",
@@ -179,8 +181,8 @@ local plugins = {
       --   dashboard.section.header
       -- }
       dashboard.section.buttons.val = {
-        dashboard.button("f", "   Find file", ":Telescope find_files<CR>"),
         dashboard.button("b", "   File browser", ":NvimTreeFocus <CR>"),
+        dashboard.button("f", "   Find file", ":Telescope find_files<CR>"),
         dashboard.button("n", "   New file", ":ene <BAR> startinsert <CR>"),
         dashboard.button("w", "󰱼   Find word", ":Telescope live_grep<CR>"),
         dashboard.button("r", "   Recent", ":Telescope oldfiles<CR>"),
@@ -219,14 +221,19 @@ local plugins = {
       opts.enhanced_diff_hl = true
     end,
   },
-  -- {
-  --   "rcarriga/nvim-notify",
-  --   opts = {
-  --     timeout = 3000,
-  --     background_color = #000000,
-  --     render = "wrapped-compact",
-  --   }
-  -- },
+  {
+    "rcarriga/nvim-notify",
+    event = "VeryLazy",
+    config = function()
+      vim.notify = require("notify")
+      require("notify").setup({
+        render = "default",
+        stages = "fade_in_slide_out",
+        timeout = 3000,
+        background_colour = "#000000"
+      })
+    end,
+  },
   {
     "MunifTanjim/prettier.nvim",
       init = function ()
@@ -234,6 +241,7 @@ local plugins = {
       end,
       bin = "prettierd",
       filetypes = {
+        "lua",
         "css",
         "graphql",
         "html",
@@ -245,7 +253,6 @@ local plugins = {
         "typescript",
         "typescriptreact",
         "yaml",
-        "lua",
       }
   },
   {

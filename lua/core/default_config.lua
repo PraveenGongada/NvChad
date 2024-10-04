@@ -8,15 +8,22 @@ M.ui = {
   ------------------------------- base46 -------------------------------------
   -- hl = highlights
   hl_add = {},
-  hl_override = {},
+  hl_override = {
+    Comment = {italic = true},
+    Conditional = {italic = true},
+    ["@comment"] = {italic = true},
+    ["@keyword.function"] = {italic = true},
+    ["@keyword.return"] = {italic = true},
+    ["@keyword"] = {italic = true},
+  },
   changed_themes = {},
   theme_toggle = { "ayu_dark", "one_light" },
   theme = "ayu_dark", -- default theme
   transparency = true,
-  lsp_semantic_tokens = false, -- needs nvim v0.9, just adds highlight groups for lsp semantic tokens
+  lsp_semantic_tokens = true, -- needs nvim v0.9, just adds highlight groups for lsp semantic tokens
 
   -- https://github.com/NvChad/base46/tree/v2.0/lua/base46/extended_integrations
-  extended_integrations = {}, -- these aren't compiled by default, ex: "alpha", "notify"
+  extended_integrations = { "notify" }, -- these aren't compiled by default, ex: "alpha", "notify"
 
   -- cmp themeing
   cmp = {
